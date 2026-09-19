@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/routes/app_router.dart';
 import 'package:news/core/routes/app_routes.dart';
-import 'package:news/core/theme/app_theme.dart';
-import 'package:news/modules/splash/presentation/pages/splash_page.dart';
+import 'package:provider/provider.dart';
+
+import 'core/providerrr/settings.dart' show Settings;
+import 'core/theme/app_theme_manager.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Settings(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<Settings>();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  SplashPage(),
+      initialRoute: AppRoutes.initial,
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      navigatorKey: navigatorKey,
+      themeMode: settings.currentThemeMode,
+      theme: AppThemeManager.getLightTheme(),
+      darkTheme: AppThemeManager.getDarkTheme(),
     );
   }
 }
-
-
