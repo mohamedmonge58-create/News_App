@@ -5,13 +5,19 @@ import 'package:provider/provider.dart';
 
 import 'core/providerrr/settings.dart' show Settings;
 import 'core/theme/app_theme_manager.dart';
+import 'modules/home/view_model/home_view_model.dart';
+import 'modules/search/view_model/search_view_model.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => Settings(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => Settings()),
+        ChangeNotifierProvider(create: (context) => HomeViewModel()),
+        ChangeNotifierProvider(create: (context) => SearchViewModel()),
+      ],
       child: const MyApp(),
     ),
   );

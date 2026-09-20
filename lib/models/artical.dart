@@ -23,7 +23,7 @@ class Artical {
       title: json['title'],
       description: json['description'],
       url: json['url'],
-      urlToImage: json['urlToImage'],
+      urlToImage: json['urlToImage'] ?? "",
       publishedAt: json['publishedAt'],
       content: json['content'],
 

@@ -2,6 +2,7 @@ import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news/core/providerrr/settings.dart';
+import 'package:news/core/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
@@ -39,7 +40,9 @@ class CustomDrawerWidget extends StatelessWidget {
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: onHomeTap,
+                  onTap: (){
+                    Navigator.pushNamed(context, AppRoutes.home);
+                  },
                   child: Row(
                     children: [
                       SvgPicture.asset(AppAssets.homeLogo),
@@ -74,8 +77,9 @@ class CustomDrawerWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 CustomDropdown<String>(
+                  onChanged: (value) {},
                   items: ['Light', 'Dark'],
-                  initialItem: settings.currentThemeMode == ThemeMode.dark ? 'Dark' : 'Light',
+                  initialItem:'Dark' ,
                   animation: const CustomDropdownAnimation(
                     type: DropdownAnimationType.scaleFade,
                     duration: Duration(milliseconds: 350),
@@ -94,13 +98,7 @@ class CustomDrawerWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  onChanged: (value) {
-                    if (value == 'Dark') {
-                      settings.changeThemeMode(ThemeMode.dark);
-                    } else {
-                      settings.changeThemeMode(ThemeMode.light);
-                    }
-                  },
+
                 ),
 
                 SizedBox(height: 24),
