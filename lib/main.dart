@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/l10n/app_localizations.dart';
 import 'package:news/core/routes/app_router.dart';
 import 'package:news/core/routes/app_routes.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       themeMode: settings.currentThemeMode,
       theme: AppThemeManager.getLightTheme(),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: settings.currentLocale,
       darkTheme: AppThemeManager.getDarkTheme(),
     );
   }

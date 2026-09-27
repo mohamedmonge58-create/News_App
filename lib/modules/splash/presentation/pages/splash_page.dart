@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:news/core/l10n/app_localizations.dart';
 import 'package:news/core/routes/app_routes.dart';
 import 'package:news/core/theme/app_assets.dart';
 import 'package:news/core/theme/app_colors.dart';
@@ -12,31 +13,42 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
 
     Timer(
-       Duration(seconds: 3),
-          () {
-        navigatorKey.currentState!.pushNamedAndRemoveUntil(AppRoutes.home , (route) => false);
+      const Duration(seconds: 3),
+      () {
+        navigatorKey.currentState!.pushNamedAndRemoveUntil(
+          AppRoutes.home,
+          (route) => false,
+        );
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    final local = AppLocalizations.of(context);
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(child: Center(child: Image.asset(AppAssets.logoWhite) )),
+          Expanded(child: Center(child: Image.asset(AppAssets.logoWhite))),
           Padding(
             padding: const EdgeInsets.only(bottom: 30.0),
-            child: Text("Supervised by Mohamed Monge",style: TextStyle(color : AppColors.mainText ,fontSize: 14, fontWeight: FontWeight.bold),),
-          )
+            child: Text(
+              local?.supervised_by ?? "Supervised by Mohamed Monge",
+              style: TextStyle(
+                color: AppColors.mainText,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ],
       ),
     );

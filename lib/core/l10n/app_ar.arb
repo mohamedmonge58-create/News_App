@@ -1,0 +1,99 @@
+{
+  "news_app": "الأخبار",
+  "go_to_home": "الذهاب إلى الرئيسية",
+  "language": "اللغة",
+  "theme": "المظهر",
+  "light": "فاتح",
+  "dark": "داكن",
+  "english": "الإنجليزية",
+  "arabic": "العربية",
+  "good_morning_news": "صباح الخير\nإليك بعض الأخبار لك",
+  "view_all": "عرض الكل",
+  "by_author": "بواسطة: {author}",
+  "@by_author": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      }
+    }
+  },
+  "article": "مقال",
+  "view_full_article": "عرض المقال كاملًا",
+  "no_additional_content": "لا يوجد محتوى إضافي متاح.",
+  "could_not_open_article": "تعذر فتح المقال: {error}",
+  "@could_not_open_article": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "search": "بحث",
+  "start_typing_to_search": "ابدأ الكتابة للبحث عن الأخبار",
+  "no_results_found": "لم يتم العثور على نتائج",
+  "something_went_wrong": "حدث خطأ ما",
+  "supervised_by": "تحت إشراف محمد منجه",
+  "category_general": "عام",
+  "category_business": "أعمال",
+  "category_sports": "رياضة",
+  "category_health": "صحة",
+  "category_entertainment": "ترفيه",
+  "category_technology": "تكنولوجيا",
+  "category_science": "علوم",
+  "seconds_ago": "منذ {count} ثوانٍ",
+  "@seconds_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "minutes_ago": "منذ {count} دقائق",
+  "@minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hours_ago": "منذ {count} ساعات",
+  "@hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "days_ago": "منذ {count} أيام",
+  "@days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "weeks_ago": "منذ {count} أسابيع",
+  "@weeks_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "months_ago": "منذ {count} أشهر",
+  "@months_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "years_ago": "منذ {count} سنوات",
+  "@years_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

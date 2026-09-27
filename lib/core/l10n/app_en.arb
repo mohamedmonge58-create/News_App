@@ -1,0 +1,99 @@
+{
+  "news_app": "News App",
+  "go_to_home": "Go To Home",
+  "language": "Language",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "english": "English",
+  "arabic": "Arabic",
+  "good_morning_news": "Good Morning \nHere is Some News For You",
+  "view_all": "View All",
+  "by_author": "By: {author}",
+  "@by_author": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      }
+    }
+  },
+  "article": "Article",
+  "view_full_article": "View Full Article",
+  "no_additional_content": "No additional content available.",
+  "could_not_open_article": "Couldn't open the article: {error}",
+  "@could_not_open_article": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "search": "Search",
+  "start_typing_to_search": "Start typing to search for news",
+  "no_results_found": "No results found",
+  "something_went_wrong": "Something went wrong",
+  "supervised_by": "Supervised by Mohamed Monge",
+  "category_general": "General",
+  "category_business": "Business",
+  "category_sports": "Sports",
+  "category_health": "Health",
+  "category_entertainment": "Entertainment",
+  "category_technology": "Technology",
+  "category_science": "Science",
+  "seconds_ago": "{count} seconds ago",
+  "@seconds_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "minutes_ago": "{count} minutes ago",
+  "@minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hours_ago": "{count} hours ago",
+  "@hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "days_ago": "{count} days ago",
+  "@days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "weeks_ago": "{count} weeks ago",
+  "@weeks_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "months_ago": "{count} months ago",
+  "@months_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "years_ago": "{count} years ago",
+  "@years_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

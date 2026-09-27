@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:news/core/l10n/app_localizations.dart';
 import 'package:news/models/artical.dart';
 import 'package:news/modules/home/widgets/ArticaleItem.dart';
 import '../../../core/utils/url_launcher_helper.dart';
@@ -11,10 +12,11 @@ class ArticleDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final local = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Article"),
+        title: Text(local.article),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -64,7 +66,7 @@ class ArticleDetailsView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "By: ${artical.author}",
+                    local.by_author(artical.author),
                     style: theme.textTheme.headlineSmall!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -72,7 +74,7 @@ class ArticleDetailsView extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    ArticaleItem.getTimeAgo(artical.publishedAt),
+                    ArticaleItem.getTimeAgo(artical.publishedAt, local),
                     style: theme.textTheme.headlineSmall!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -84,22 +86,22 @@ class ArticleDetailsView extends StatelessWidget {
               const Divider(height: 24),
               if (artical.description.isNotEmpty) ...[
                 Text(
-                  _cleanText(artical.description),
+                  _cleanText(artical.description, local),
                   style: theme.textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 12),
               ],
               Text(
-                _cleanText(artical.content),
+                _cleanText(artical.content, local),
                 style: theme.textTheme.bodyMedium!.copyWith(height: 1.6),
               ),
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
                 child: FilledButton.icon(
-                  onPressed: () => _openFullArticle(context),
+                  onPressed: () => _openFullArticle(context, local),
                   icon: const Icon(Icons.open_in_new),
-                  label: const Text("View Full Article"),
+                  label: Text(local.view_full_article),
                   style: FilledButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
@@ -113,21 +115,21 @@ class ArticleDetailsView extends StatelessWidget {
     );
   }
 
-  Future<void> _openFullArticle(BuildContext context) async {
+  Future<void> _openFullArticle(BuildContext context, AppLocalizations local) async {
     try {
       await launchArticleUrl(artical.url);
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Couldn't open the article: $e")),
+          SnackBar(content: Text(local.could_not_open_article(e.toString()))),
         );
       }
     }
   }
 
-  String _cleanText(String? text) {
+  String _cleanText(String? text, AppLocalizations local) {
     if (text == null || text.isEmpty) {
-      return "No additional content available.";
+      return local.no_additional_content;
     }
     return text
         .replaceAll(RegExp(r'\[\+\d+ chars\]'), '')

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:news/core/l10n/app_localizations.dart';
 import 'package:news/modules/home/widgets/ArticaleItem.dart';
 import '../view_model/search_view_model.dart';
 
@@ -23,9 +24,10 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final vm = context.watch<SearchViewModel>();
+    final local = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Search")),
+      appBar: AppBar(title: Text(local.search)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -34,7 +36,7 @@ class _SearchViewState extends State<SearchView> {
               controller: _controller,
               onChanged: context.read<SearchViewModel>().queryChanged,
               decoration: InputDecoration(
-                hintText: "Search",
+                hintText: local.search,
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _controller.text.isNotEmpty
                     ? IconButton(
@@ -51,19 +53,19 @@ class _SearchViewState extends State<SearchView> {
               ),
             ),
             const SizedBox(height: 16),
-            Expanded(child: _buildBody(vm, theme)),
+            Expanded(child: _buildBody(vm, theme, local)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildBody(SearchViewModel vm, ThemeData theme) {
+  Widget _buildBody(SearchViewModel vm, ThemeData theme, AppLocalizations local) {
     switch (vm.status) {
       case SearchStatus.initial:
         return Center(
           child: Text(
-            "Start typing to search for news",
+            local.start_typing_to_search,
             style: theme.textTheme.bodyMedium!.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
             ),
@@ -74,14 +76,14 @@ class _SearchViewState extends State<SearchView> {
       case SearchStatus.empty:
         return Center(
           child: Text(
-            "No results found",
+            local.no_results_found,
             style: theme.textTheme.bodyMedium!.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
             ),
           ),
         );
       case SearchStatus.error:
-        return Center(child: Text(vm.errorMessage ?? "Something went wrong"));
+        return Center(child: Text(vm.errorMessage ?? local.something_went_wrong));
       case SearchStatus.success:
         return ListView.separated(
           separatorBuilder: (context, index) => const SizedBox(height: 16),
