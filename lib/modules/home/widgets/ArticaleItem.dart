@@ -47,13 +47,20 @@ class ArticaleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
+    final isDark = theme.brightness == Brightness.dark;
+    final cardBg = isDark ? Colors.black : Colors.white;
+    final cardFg = isDark ? Colors.white : Colors.black;
+    final cardFgVariant = isDark ? Colors.white70 : Colors.black87;
+    final cardOutline = isDark ? Colors.white : Colors.black;
+
     return GestureDetector(
       onTap: () => _showDetails(context),
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
+          color: cardBg,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: theme.colorScheme.outline),
+          border: Border.all(color: cardOutline, width: 1.5),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,6 +92,7 @@ class ArticaleItem extends StatelessWidget {
               style: theme.textTheme.headlineSmall!.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
+                color: cardFg,
               ),
             ),
             const SizedBox(height: 10),
@@ -96,7 +104,7 @@ class ArticaleItem extends StatelessWidget {
                   style: theme.textTheme.headlineSmall!.copyWith(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
-                    color: theme.colorScheme.onSurfaceVariant,
+                    color: cardFgVariant,
                   ),
                 ),
                 Text(
@@ -104,7 +112,7 @@ class ArticaleItem extends StatelessWidget {
                   style: theme.textTheme.headlineSmall!.copyWith(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
-                    color: theme.colorScheme.onSurfaceVariant,
+                    color: cardFgVariant,
                   ),
                 ),
               ],
@@ -142,7 +150,14 @@ class _ArticleDetailsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
+    final isDark = theme.brightness == Brightness.dark;
+    final cardBg = isDark ? Colors.black : Colors.white;
+    final cardFg = isDark ? Colors.white : Colors.black;
+    final cardFgVariant = isDark ? Colors.white70 : Colors.black87;
+    final cardOutline = isDark ? Colors.white : Colors.black;
+
     return DraggableScrollableSheet(
       initialChildSize: 0.6,
       minChildSize: 0.3,
@@ -157,8 +172,9 @@ class _ArticleDetailsSheet extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: cardBg,
               borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: cardOutline, width: 1.5),
             ),
             child: Column(
               children: [
@@ -175,7 +191,7 @@ class _ArticleDetailsSheet extends StatelessWidget {
                             height: 4,
                             margin: const EdgeInsets.only(bottom: 16),
                             decoration: BoxDecoration(
-                              color: Colors.white24,
+                              color: cardFg.withValues(alpha: 0.3),
                               borderRadius: BorderRadius.circular(2),
                             ),
                           ),
@@ -189,21 +205,21 @@ class _ArticleDetailsSheet extends StatelessWidget {
                             fit: BoxFit.cover,
                             placeholder: (context, url) => Container(
                               height: 200,
-                              color: Colors.white12,
+                              color: cardFg.withValues(alpha: 0.1),
                               child: const Center(child: CircularProgressIndicator()),
                             ),
                             errorWidget: (context, url, error) => Container(
                               height: 200,
-                              color: Colors.white12,
-                              child: const Icon(Icons.image_not_supported, color: Colors.white54),
+                              color: cardFg.withValues(alpha: 0.1),
+                              child: Icon(Icons.image_not_supported, color: cardFg.withValues(alpha: 0.5)),
                             ),
                           ),
                         ),
                         const SizedBox(height: 16),
                         Text(
                           artical.title,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: cardFg,
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
                           ),
@@ -211,12 +227,20 @@ class _ArticleDetailsSheet extends StatelessWidget {
                         const SizedBox(height: 12),
                         Text(
                           _cleanText(artical.description, local),
-                          style: const TextStyle(color: Colors.white70, fontSize: 14, height: 1.5),
+                          style: TextStyle(
+                            color: cardFgVariant,
+                            fontSize: 14,
+                            height: 1.5,
+                          ),
                         ),
                         const SizedBox(height: 8),
                         Text(
                           _cleanText(artical.content, local),
-                          style: const TextStyle(color: Colors.white54, fontSize: 13, height: 1.5),
+                          style: TextStyle(
+                            color: cardFg.withValues(alpha: 0.7),
+                            fontSize: 13,
+                            height: 1.5,
+                          ),
                         ),
                       ],
                     ),
@@ -229,16 +253,16 @@ class _ArticleDetailsSheet extends StatelessWidget {
                     top: 12,
                     bottom: 16,
                   ),
-                  decoration: const BoxDecoration(
-                    border: Border(top: BorderSide(color: Colors.white12)),
+                  decoration: BoxDecoration(
+                    border: Border(top: BorderSide(color: cardOutline)),
                   ),
                   child: SizedBox(
                     width: double.infinity,
                     child: FilledButton(
                       onPressed: () => _openFullArticle(context, local),
                       style: FilledButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
+                        backgroundColor: cardFg,
+                        foregroundColor: cardBg,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),

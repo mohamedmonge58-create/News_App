@@ -76,7 +76,7 @@ class HomeView extends StatelessWidget {
                   Expanded(
                     child: ListView.separated(
                       shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
+                      physics:  BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {

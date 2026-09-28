@@ -33,6 +33,7 @@ class CustomDrawerWidget extends StatelessWidget {
               local!.news_app,
               style: theme.textTheme.headlineSmall!.copyWith(
                 fontWeight: FontWeight.w700,
+                color: Colors.black,
               ),
             ),
           ),
@@ -97,14 +98,28 @@ class CustomDrawerWidget extends StatelessWidget {
                   ),
                   decoration: CustomDropdownDecoration(
                     closedFillColor: Colors.transparent,
+                    expandedFillColor: theme.brightness == Brightness.light
+                        ? Colors.white
+                        :  Colors.black,
                     closedBorder: Border.all(color: Colors.white, width: 1),
+                    expandedBorder: Border.all(color: Colors.white, width: 1),
                     closedSuffixIcon: SvgPicture.asset(
+                      AppAssets.polygonIcon,
+                      width: 16,
+                      height: 16,
+                    ),
+                    expandedSuffixIcon: SvgPicture.asset(
                       AppAssets.polygonIcon,
                       width: 16,
                       height: 16,
                     ),
                     headerStyle: theme.textTheme.titleLarge!.copyWith(
                       color: Colors.white,
+                    ),
+                    listItemStyle: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.brightness == Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -139,14 +154,28 @@ class CustomDrawerWidget extends StatelessWidget {
                   ),
                   decoration: CustomDropdownDecoration(
                     closedFillColor: Colors.transparent,
+                    expandedFillColor: theme.brightness == Brightness.light
+                        ? Colors.white
+                        : const Color(0xff1f1f1f),
                     closedBorder: Border.all(color: Colors.white, width: 1),
+                    expandedBorder: Border.all(color: Colors.white, width: 1),
                     closedSuffixIcon: SvgPicture.asset(
+                      AppAssets.polygonIcon,
+                      width: 16,
+                      height: 16,
+                    ),
+                    expandedSuffixIcon: SvgPicture.asset(
                       AppAssets.polygonIcon,
                       width: 16,
                       height: 16,
                     ),
                     headerStyle: theme.textTheme.titleLarge!.copyWith(
                       color: Colors.white,
+                    ),
+                    listItemStyle: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.brightness == Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ),
                   onChanged: (value) {

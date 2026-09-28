@@ -13,6 +13,11 @@ class ArticleDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final local = AppLocalizations.of(context)!;
+    final isDark = theme.brightness == Brightness.dark;
+    final cardBg = isDark ? Colors.black : Colors.white;
+    final cardFg = isDark ? Colors.white : Colors.black;
+    final cardFgVariant = isDark ? Colors.white70 : Colors.black87;
+    final cardOutline = isDark ? Colors.white : Colors.black;
 
     return Scaffold(
       appBar: AppBar(
@@ -23,8 +28,9 @@ class ArticleDetailsView extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
+            color: cardBg,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: theme.colorScheme.outline),
+            border: Border.all(color: cardOutline, width: 1.5),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,6 +65,7 @@ class ArticleDetailsView extends StatelessWidget {
                 style: theme.textTheme.headlineSmall!.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
+                  color: cardFg,
                 ),
               ),
               const SizedBox(height: 10),
@@ -70,7 +77,7 @@ class ArticleDetailsView extends StatelessWidget {
                     style: theme.textTheme.headlineSmall!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: theme.colorScheme.onSurfaceVariant,
+                      color: cardFgVariant,
                     ),
                   ),
                   Text(
@@ -78,7 +85,7 @@ class ArticleDetailsView extends StatelessWidget {
                     style: theme.textTheme.headlineSmall!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: theme.colorScheme.onSurfaceVariant,
+                      color: cardFgVariant,
                     ),
                   ),
                 ],
@@ -87,13 +94,18 @@ class ArticleDetailsView extends StatelessWidget {
               if (artical.description.isNotEmpty) ...[
                 Text(
                   _cleanText(artical.description, local),
-                  style: theme.textTheme.bodyMedium,
+                  style: theme.textTheme.bodyMedium!.copyWith(
+                    color: cardFg,
+                  ),
                 ),
                 const SizedBox(height: 12),
               ],
               Text(
                 _cleanText(artical.content, local),
-                style: theme.textTheme.bodyMedium!.copyWith(height: 1.6),
+                style: theme.textTheme.bodyMedium!.copyWith(
+                  height: 1.6,
+                  color: cardFg,
+                ),
               ),
               const SizedBox(height: 20),
               SizedBox(
@@ -103,6 +115,8 @@ class ArticleDetailsView extends StatelessWidget {
                   icon: const Icon(Icons.open_in_new),
                   label: Text(local.view_full_article),
                   style: FilledButton.styleFrom(
+                    backgroundColor: cardFg,
+                    foregroundColor: cardBg,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/providerrr/settings.dart';
 import '../view_model/home_view_model.dart';
 import 'ArticaleItem.dart';
 
@@ -27,6 +28,11 @@ class _SelectedCategoryViewState extends State<SelectedCategoryView> {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<HomeViewModel>(context);
+    final settings = context.watch<Settings>();
+    final isDark = settings.currentThemeMode == ThemeMode.dark;
+    final activeColor = isDark ? Colors.white : Colors.black;
+    final inactiveColor = isDark ? Colors.white70 : Colors.black54;
+
     return Column(
       spacing: 16,
       children: [
@@ -35,50 +41,47 @@ class _SelectedCategoryViewState extends State<SelectedCategoryView> {
         if (vm.selectedCategory != null)
           DefaultTabController(
             length: vm.sourcesList.length,
-
             child: TabBar(
               isScrollable: true,
               onTap: vm.changeTab,
               indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(color: Colors.black, width: 3),
+                borderSide: BorderSide(
+                  color: activeColor,
+                  width: 3,
+                ),
               ),
               padding: EdgeInsets.zero,
               tabAlignment: TabAlignment.start,
               dividerColor: Colors.transparent,
-
               indicatorSize: TabBarIndicatorSize.label,
               indicatorWeight: 3,
-              dividerHeight: 4,
+              dividerHeight: 0,
               labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
               indicatorColor: Colors.transparent,
-              labelColor: Colors.black,
-
-              unselectedLabelStyle: const TextStyle(
+              labelColor: activeColor,
+              unselectedLabelColor: inactiveColor,
+              unselectedLabelStyle: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),
-
               tabs: vm.sourcesList
                   .map((source) => Tab(text: source.name))
                   .toList(),
             ),
           ),
 
-             Expanded(
-               child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(height: 16),
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                itemCount: vm.articles.length,
-                itemBuilder: (context, index) {
-
-                  return ArticaleItem(artical: vm.articles[index]);
-                },
-
-
-                       ),
-             ),
+        Expanded(
+          child: ListView.separated(
+            separatorBuilder: (context, index) => SizedBox(height: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemCount: vm.articles.length,
+            itemBuilder: (context, index) {
+              return ArticaleItem(artical: vm.articles[index]);
+            },
+          ),
+        ),
       ],
     );
   }

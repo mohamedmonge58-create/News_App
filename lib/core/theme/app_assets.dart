@@ -11,13 +11,13 @@ abstract class AppAssets {
 
   //images
 
-  static const String general = "assets/images/general.png";
-  static const String sports = "assets/images/sport.png";
-  static const String business = "assets/images/busniess.png";
-  static const String entertainment = "assets/images/entertainment.png";
-  static const String health = "assets/images/helth.png";
+  static const String general = "assets/images/Rectangle 1.png";
+  static const String sports = "assets/images/messi.png";
+  static const String business = "assets/images/busines.png";
+  static const String entertainment = "assets/images/entertainment1.png";
+  static const String health = "assets/images/health.png";
   static const String science = "assets/images/science.png";
-  static const String technology = "assets/images/technology.png";
+  static const String technology = "assets/images/tech.png";
 
 
 }

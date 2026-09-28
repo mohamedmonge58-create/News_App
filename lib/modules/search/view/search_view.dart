@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:news/core/l10n/app_localizations.dart';
 import 'package:news/modules/home/widgets/ArticaleItem.dart';
+import '../../../core/providerrr/settings.dart';
 import '../view_model/search_view_model.dart';
 
 class SearchView extends StatefulWidget {
@@ -25,9 +26,13 @@ class _SearchViewState extends State<SearchView> {
     final theme = Theme.of(context);
     final vm = context.watch<SearchViewModel>();
     final local = AppLocalizations.of(context)!;
+    final settings = context.watch<Settings>();
 
     return Scaffold(
-      appBar: AppBar(title: Text(local.search)),
+      appBar: AppBar(title: Text(local.search , style: theme.textTheme.headlineSmall!.copyWith(
+        color: settings.currentThemeMode==ThemeMode.dark?Colors.white:Colors.black,
+
+      ) ),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
