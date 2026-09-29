@@ -1,23 +1,20 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news/core/l10n/app_localizations.dart';
 import 'package:news/core/providerrr/settings.dart';
-import 'package:news/core/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 
 class CustomDrawerWidget extends StatelessWidget {
   final void Function()? onHomeTap;
-  const CustomDrawerWidget({super.key, this.onHomeTap});
+  const CustomDrawerWidget({super.key , this.onHomeTap});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final theme = Theme.of(context);
     final settings = context.watch<Settings>();
-    final local = AppLocalizations.of(context);
 
     return Container(
       color: AppColors.primary,
@@ -30,10 +27,10 @@ class CustomDrawerWidget extends StatelessWidget {
             height: 200,
             color: Colors.white,
             child: Text(
-              local!.news_app,
+              "News App",
+
               style: theme.textTheme.headlineSmall!.copyWith(
                 fontWeight: FontWeight.w700,
-                color: Colors.black,
               ),
             ),
           ),
@@ -42,15 +39,13 @@ class CustomDrawerWidget extends StatelessWidget {
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.home);
-                  },
+                  onTap: onHomeTap,
                   child: Row(
                     children: [
                       SvgPicture.asset(AppAssets.homeLogo),
                       SizedBox(width: 8),
                       Text(
-                        local.go_to_home,
+                        "Go To Home",
                         style: theme.textTheme.titleLarge!.copyWith(
                           color: Colors.white,
                           fontSize: 20,
@@ -68,7 +63,7 @@ class CustomDrawerWidget extends StatelessWidget {
                     SvgPicture.asset(AppAssets.rollerLogo),
                     SizedBox(width: 8),
                     Text(
-                      local.theme,
+                      "Theme",
                       style: theme.textTheme.titleLarge!.copyWith(
                         color: Colors.white,
                         fontSize: 20,
@@ -79,17 +74,8 @@ class CustomDrawerWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 CustomDropdown<String>(
-                  onChanged: (value) {
-                    if (value == local.light || value == 'Light') {
-                      settings.changeThemeMode(ThemeMode.light);
-                    } else if (value == local.dark || value == 'Dark') {
-                      settings.changeThemeMode(ThemeMode.dark);
-                    }
-                  },
-                  items: [local.light, local.dark],
-                  initialItem: settings.currentThemeMode == ThemeMode.dark
-                      ? local.dark
-                      : local.light,
+                  items: ['Light', 'Dark'],
+                  initialItem: settings.currentThemeMode == ThemeMode.dark ? 'Dark' : 'Light',
                   animation: const CustomDropdownAnimation(
                     type: DropdownAnimationType.scaleFade,
                     duration: Duration(milliseconds: 350),
@@ -98,17 +84,8 @@ class CustomDrawerWidget extends StatelessWidget {
                   ),
                   decoration: CustomDropdownDecoration(
                     closedFillColor: Colors.transparent,
-                    expandedFillColor: theme.brightness == Brightness.light
-                        ? Colors.white
-                        :  Colors.black,
                     closedBorder: Border.all(color: Colors.white, width: 1),
-                    expandedBorder: Border.all(color: Colors.white, width: 1),
                     closedSuffixIcon: SvgPicture.asset(
-                      AppAssets.polygonIcon,
-                      width: 16,
-                      height: 16,
-                    ),
-                    expandedSuffixIcon: SvgPicture.asset(
                       AppAssets.polygonIcon,
                       width: 16,
                       height: 16,
@@ -116,22 +93,26 @@ class CustomDrawerWidget extends StatelessWidget {
                     headerStyle: theme.textTheme.titleLarge!.copyWith(
                       color: Colors.white,
                     ),
-                    listItemStyle: theme.textTheme.titleLarge!.copyWith(
-                      color: theme.brightness == Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                    ),
                   ),
+                  onChanged: (value) {
+                    if (value == 'Dark') {
+                      settings.changeThemeMode(ThemeMode.dark);
+                    } else {
+                      settings.changeThemeMode(ThemeMode.light);
+                    }
+                  },
                 ),
+
                 SizedBox(height: 24),
                 Divider(color: Colors.white),
                 SizedBox(height: 24),
+
                 Row(
                   children: [
                     SvgPicture.asset(AppAssets.globeLogo),
                     SizedBox(width: 8),
                     Text(
-                      local.language,
+                      "Language",
                       style: theme.textTheme.titleLarge!.copyWith(
                         color: Colors.white,
                         fontSize: 20,
@@ -142,10 +123,7 @@ class CustomDrawerWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 CustomDropdown<String>(
-                  items: [local.english, local.arabic],
-                  initialItem: settings.currentLocale.languageCode == 'ar'
-                      ? local.arabic
-                      : local.english,
+                  items: ['English', 'Arabic'],
                   animation: const CustomDropdownAnimation(
                     type: DropdownAnimationType.scaleFade,
                     duration: Duration(milliseconds: 350),
@@ -154,17 +132,8 @@ class CustomDrawerWidget extends StatelessWidget {
                   ),
                   decoration: CustomDropdownDecoration(
                     closedFillColor: Colors.transparent,
-                    expandedFillColor: theme.brightness == Brightness.light
-                        ? Colors.white
-                        : const Color(0xff1f1f1f),
                     closedBorder: Border.all(color: Colors.white, width: 1),
-                    expandedBorder: Border.all(color: Colors.white, width: 1),
                     closedSuffixIcon: SvgPicture.asset(
-                      AppAssets.polygonIcon,
-                      width: 16,
-                      height: 16,
-                    ),
-                    expandedSuffixIcon: SvgPicture.asset(
                       AppAssets.polygonIcon,
                       width: 16,
                       height: 16,
@@ -172,19 +141,8 @@ class CustomDrawerWidget extends StatelessWidget {
                     headerStyle: theme.textTheme.titleLarge!.copyWith(
                       color: Colors.white,
                     ),
-                    listItemStyle: theme.textTheme.titleLarge!.copyWith(
-                      color: theme.brightness == Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                    ),
                   ),
-                  onChanged: (value) {
-                    if (value == local.arabic || value == 'Arabic') {
-                      settings.changeLocale(const Locale('ar'));
-                    } else if (value == local.english || value == 'English') {
-                      settings.changeLocale(const Locale('en'));
-                    }
-                  },
+                  onChanged: (value) {},
                 ),
               ],
             ),
