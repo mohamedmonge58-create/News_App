@@ -7,7 +7,7 @@ class ArticaleItem extends StatelessWidget {
   final Artical artical;
   const ArticaleItem({super.key, required this.artical});
 
-  String getTimeAgo(String publishedAt) {
+  static String getTimeAgo(String publishedAt) {
     final publishedDate = DateTime.parse(publishedAt);
     final now = DateTime.now();
 

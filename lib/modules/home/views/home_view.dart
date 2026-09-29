@@ -96,7 +96,7 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             )
-          : SelectedCategoryView(),
+          : SelectedCategoryView( selectedCategory: vm.selectedCategory!),
     );
   }
 }

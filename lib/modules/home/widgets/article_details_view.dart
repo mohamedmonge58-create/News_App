@@ -81,7 +81,7 @@ class ArticleDetailsView extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    ArticaleItem.getTimeAgo(artical.publishedAt, local),
+                    ArticaleItem.getTimeAgo(artical.publishedAt),
                     style: theme.textTheme.headlineSmall!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
