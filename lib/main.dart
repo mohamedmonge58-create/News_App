@@ -1,17 +1,20 @@
+
 import 'package:flutter/material.dart';
 import 'package:news/core/routes/app_router.dart';
 import 'package:news/core/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
-import 'core/providerrr/settings.dart' show Settings;
+import 'core/l10n/app_localizations.dart';
+import 'core/providerrr/settings.dart';
 import 'core/theme/app_theme_manager.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> navigatorKey =
+GlobalKey<NavigatorState>();
 
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => Settings(),
+      create: (_) => Settings(),
       child: const MyApp(),
     ),
   );
@@ -22,16 +25,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final settings = context.watch<Settings>();
+    return Consumer<Settings>(
+      builder: (context, settings, child) {
+        return MaterialApp(
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.initial,
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      navigatorKey: navigatorKey,
-      themeMode: settings.currentThemeMode,
-      theme: AppThemeManager.getLightTheme(),
-      darkTheme: AppThemeManager.getDarkTheme(),
+          // Localization
+          locale: settings.currentLocale,
+          localizationsDelegates:
+          AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+
+          // Routing
+          initialRoute: AppRoutes.initial,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+
+          // Theme
+          themeMode: settings.currentThemeMode,
+          theme: AppThemeManager.getLightTheme(),
+          darkTheme: AppThemeManager.getDarkTheme(),
+        );
+      },
     );
   }
 }

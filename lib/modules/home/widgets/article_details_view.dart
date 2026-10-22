@@ -12,8 +12,15 @@ class ArticleDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final local = AppLocalizations.of(context)!;
-    final isDark = theme.brightness == Brightness.dark;
+    final local = AppLocalizations.of(context);
+
+    if (local == null) {
+      return const Scaffold(
+        body: Center(
+          child: Text('Localization is not available'),
+        ),
+      );
+    }    final isDark = theme.brightness == Brightness.dark;
     final cardBg = isDark ? Colors.black : Colors.white;
     final cardFg = isDark ? Colors.white : Colors.black;
     final cardFgVariant = isDark ? Colors.white70 : Colors.black87;
@@ -21,6 +28,8 @@ class ArticleDetailsView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+
         title: Text(local.article),
       ),
       body: SingleChildScrollView(
@@ -111,8 +120,7 @@ class ArticleDetailsView extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: FilledButton.icon(
-                  onPressed: () => _openFullArticle(context, local),
-                  icon: const Icon(Icons.open_in_new),
+                  onPressed: () => _openFullArticle(context, local),                  icon: const Icon(Icons.open_in_new),
                   label: Text(local.view_full_article),
                   style: FilledButton.styleFrom(
                     backgroundColor: cardFg,

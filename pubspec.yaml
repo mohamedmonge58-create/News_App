@@ -42,6 +42,7 @@ dependencies:
   animated_custom_dropdown: ^4.0.0
   http: ^1.6.0
   cached_network_image: ^4.0.0
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter_gen :
   # included with your application, so that you can use the icons in
   # the material Icons class.
 flutter:
+  generate: true
 
   uses-material-design: true
 
