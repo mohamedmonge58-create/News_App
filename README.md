@@ -1,47 +1,56 @@
 # 📰 News App
 
-A Flutter news application that allows users to browse the latest news by category, explore articles, and customize the app experience with Arabic and English language support and light/dark themes.
+A Flutter application for browsing news articles by category, searching for news, and reading article details with a clean and user-friendly interface.
 
 ## 📱 Screenshots
 
 ### Splash Screen
-![Splash Screen](screenshots/splash%20screen.png)
+
+<p align="center">
+  <img src="splash%20screen.png" width="180" alt="Splash Screen" />
+</p>
 
 ### Home Screen
-| Home Screen 1 | Home Screen 2 |
-|---|---|
-| ![Home Screen 1](screenshots/home%20screen%201.png) | ![Home Screen 2](screenshots/home%20screen%202.png) |
+
+<p align="center">
+  <img src="home%20screen%201.png" width="180" alt="Home Screen 1" />
+  <img src="home%20screen%202.png" width="180" alt="Home Screen 2" />
+</p>
 
 ### Categories
-| Category 1 | Category 2 |
-|---|---|
-| ![Category 1](screenshots/category1.png) | ![Category 2](screenshots/category2.png) |
 
-### Articles
-| Article Details | Article Sources |
-|---|---|
-| ![Article Details](screenshots/artical%20details.png) | ![Article Sources](screenshots/artical%20source.png) |
+<p align="center">
+  <img src="category1.png" width="180" alt="Categories Screen 1" />
+  <img src="category2.png" width="180" alt="Categories Screen 2" />
+</p>
+
+### Article Details
+
+<p align="center">
+  <img src="artical%20details.png" width="180" alt="Article Details Screen" />
+  <img src="artical%20source.png" width="180" alt="Article Sources Screen" />
+</p>
 
 ## ✨ Features
 
 - Browse news articles by category.
-- Retrieve news dynamically using REST APIs.
-- View article details and open the full article externally.
+- Fetch news using REST APIs.
 - Search for news articles.
+- View article details and access the full article.
 - Switch between Arabic and English.
-- Customize the appearance with light and dark themes.
-- Save language preferences locally using SharedPreferences.
-- Responsive Flutter user interface.
+- Support for light and dark themes.
+- Save language preferences locally.
+- Responsive user interface built with Flutter.
 
 ## 🛠️ Technologies
 
-- **Flutter** — Cross-platform UI development.
-- **Dart** — Application programming language.
-- **REST API** — Fetching news data.
-- **Provider** — State management.
-- **SharedPreferences** — Local preference persistence.
-- **Flutter Localizations** — Arabic and English translations.
-- **url_launcher** — Opening article links externally.
+- Flutter
+- Dart
+- REST APIs
+- Provider
+- SharedPreferences
+- Flutter Localization
+- url_launcher
 
 ## 🚀 Getting Started
 
@@ -77,7 +86,7 @@ A Flutter news application that allows users to browse the latest news by catego
    flutter gen-l10n
    ```
 
-5. Run the application:
+5. Run the app:
 
    ```bash
    flutter run
@@ -85,30 +94,11 @@ A Flutter news application that allows users to browse the latest news by catego
 
 ## 🌐 Localization
 
-The application supports:
-
-- **English**
-- **Arabic**, with right-to-left layout support.
-
-Users can change the language through the application settings.
+The application supports English and Arabic, allowing users to change the display language through the app settings.
 
 ## 🎨 Themes
 
-The application supports light and dark themes to provide a customizable reading experience.
-
-## 📂 Project Structure
-
-```text
-lib/
-├── core/
-│   ├── l10n/          # Localization resources
-│   ├── routes/        # App navigation
-│   ├── theme/         # Colors, assets, and themes
-│   └── providerrr/    # Settings and state management
-├── models/            # Data models
-├── services/          # Network and API services
-└── ...
-```
+Users can switch between light and dark themes.
 
 ## 👨‍💻 Author
 
@@ -118,4 +108,4 @@ lib/
 
 ---
 
-Built with Flutter and Dart.
+Built with Flutter 💙
