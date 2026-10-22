@@ -7,28 +7,34 @@ A Flutter application for browsing news articles by category, searching for news
 ### Splash Screen
 
 <p align="center">
-  <img src="splash%20screen.png" width="180" alt="Splash Screen" />
+  <img src="./splash%20screen.png" width="180" alt="Splash Screen" />
 </p>
 
 ### Home Screen
 
 <p align="center">
-  <img src="home%20screen%201.png" width="180" alt="Home Screen 1" />
-  <img src="home%20screen%202.png" width="180" alt="Home Screen 2" />
+  <img src="./home%20screen%201.png" width="180" alt="Home Screen 1" />
+  <img src="./home%20screen%202.png" width="180" alt="Home Screen 2" />
 </p>
 
 ### Categories
 
 <p align="center">
-  <img src="category1.png" width="180" alt="Categories Screen 1" />
-  <img src="category2.png" width="180" alt="Categories Screen 2" />
+  <img src="./category1.png" width="180" alt="Category 1" />
+  <img src="./category2.png" width="180" alt="Category 2" />
 </p>
 
-### Article Details
+### Article Screens
 
 <p align="center">
-  <img src="artical%20details.png" width="180" alt="Article Details Screen" />
-  <img src="artical%20source.png" width="180" alt="Article Sources Screen" />
+  <img src="./artical%20details.png" width="180" alt="Article Details" />
+  <img src="./artical%20source.png" width="180" alt="Article Source" />
+</p>
+
+### Additional Screenshot
+
+<p align="center">
+  <img src="./Screenshot_1792647227.png" width="180" alt="Additional App Screenshot" />
 </p>
 
 ## ✨ Features
