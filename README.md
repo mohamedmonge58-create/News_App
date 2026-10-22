@@ -13,7 +13,7 @@ A Flutter application for browsing news articles by category, searching for news
 ### Home Screen
 
 <p align="center">
-  <img src="./home%20screen%201.png" width="180" alt="Home Screen 1" />
+  <img src="./home%20screen%201.png" width="180" alt="Home Screen" />
   <img src="./home%20screen%202.png" width="180" alt="Home Screen 2" />
 </p>
 
@@ -31,12 +31,11 @@ A Flutter application for browsing news articles by category, searching for news
   <img src="./artical%20source.png" width="180" alt="Article Source" />
 </p>
 
-### Additional Screenshot
+### Drawer
 
 <p align="center">
-  <img src="./Screenshot_1792647227.png" width="180" alt="Additional App Screenshot" />
+  <img src="./drawer.png" width="180" alt="Navigation Drawer" />
 </p>
-
 ## ✨ Features
 
 - Browse news articles by category.
