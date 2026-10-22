@@ -9,7 +9,8 @@
 ### Home Screen
 
 <p align="center">
-<img src="./screenshots/home%20screen%201.png" width="180" alt="Home Screen 1" />  <img src="./screenshots/home%20screen%202.png" width="180" alt="Home Screen 2" />
+<img src="screenshots/home%20screen%201.png" width="180" alt="Home Screen 1"> 
+  <img src="./screenshots/home%20screen%202.png" width="180" alt="Home Screen 2" />
 </p>
 
 ### Categories
